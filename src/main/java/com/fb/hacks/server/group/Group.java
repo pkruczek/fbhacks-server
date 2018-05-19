@@ -1,9 +1,11 @@
 package com.fb.hacks.server.group;
 
 import com.fb.hacks.server.user.User;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Wither;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +16,7 @@ import java.util.Set;
 @Wither
 @Builder
 @EqualsAndHashCode
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class Group {
     @Id
     private final String id;
