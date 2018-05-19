@@ -1,16 +1,25 @@
 package com.fb.hacks.server.api;
 
+import com.fb.hacks.server.user.UserSaveDto;
+import com.fb.hacks.server.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequiredArgsConstructor
-
+@RequestMapping("/api/")
 public class UserController {
+    private final UserService userService;
 
-    @GetMapping("/test")
-    String getUser(){
-        return "adaad";
+    @PostMapping("user")
+    ResponseEntity addUser(@RequestBody UserSaveDto userSaveDto){
+        userService.createUser(userSaveDto);
+        return new ResponseEntity<>(CREATED);
     }
 }

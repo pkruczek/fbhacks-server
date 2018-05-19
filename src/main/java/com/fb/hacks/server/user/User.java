@@ -1,6 +1,5 @@
 package com.fb.hacks.server.user;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +16,7 @@ import java.util.Set;
 @Wither
 @Builder
 @EqualsAndHashCode(exclude = "id")
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class User {
 
     @Id

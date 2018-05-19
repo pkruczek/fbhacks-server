@@ -27,11 +27,11 @@ public class InterestMatcher {
     public AllResults matchAll(String currentUserId) {
         Set<String> currentUserAllInterests = extractCurrentUserInterests(currentUserId);
         List<MatchResult> allGroups = groupRepository.findAll().stream()
-                .map(it -> matchInterestsForGroup(currentUserAllInterests, it))
+                .map(group -> matchInterestsForGroup(currentUserAllInterests, group))
                 .sorted(comparing(it -> (int) -it.getIntersectionPercentResult()))
                 .collect(Collectors.toList());
         List<MatchResult> allMatchResultUsers = userRepository.findAll().stream()
-                .map(it -> matchInterestsForUser(currentUserAllInterests, it))
+                .map(targetUser -> matchInterestsForUser(currentUserAllInterests, targetUser))
                 .sorted(comparing(it -> (int) -it.getIntersectionPercentResult()))
                 .collect(Collectors.toList());
         return new AllResults(allGroups, allMatchResultUsers);
