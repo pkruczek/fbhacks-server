@@ -12,5 +12,9 @@ public final class ObjectIdConverter {
         }
         return objectId;
     }
+
+    public static String toString(ObjectId objectId) {
+        return objectId.toString();
+    }
 }
 

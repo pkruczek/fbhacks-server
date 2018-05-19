@@ -1,7 +1,9 @@
 package com.fb.hacks.server.api;
 
+import com.fb.hacks.server.user.UserCreateDto;
 import com.fb.hacks.server.user.UserSaveDto;
 import com.fb.hacks.server.user.UserService;
+import com.sun.corba.se.spi.ior.ObjectId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("user")
-    ResponseEntity addUser(@RequestBody UserSaveDto userSaveDto){
-        userService.createUser(userSaveDto);
-        return new ResponseEntity<>(CREATED);
+    ResponseEntity<UserCreateDto> addUser(@RequestBody UserSaveDto userSaveDto){
+        return new ResponseEntity<UserCreateDto>(userService.createUser(userSaveDto), CREATED);
     }
 }
