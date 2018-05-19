@@ -13,8 +13,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @EqualsAndHashCode(exclude = "id")
 @RequiredArgsConstructor(staticName = "of")
 public class Provider {
-
     private final ObjectId id;
-
-
 }
