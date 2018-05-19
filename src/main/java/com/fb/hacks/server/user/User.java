@@ -10,6 +10,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Set;
+
 @Document
 @Data
 @Wither
@@ -25,6 +27,7 @@ public class User {
     private final String password;
     private final String firstName;
     private final String lastName;
+    private final Set<String> interests;
 }
 
 
