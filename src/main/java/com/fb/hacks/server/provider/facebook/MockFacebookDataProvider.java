@@ -3,16 +3,18 @@ package com.fb.hacks.server.provider.facebook;
 import com.fb.hacks.server.provider.IntegratedServiceDataProvider;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Set;
 
+@Component
 public class MockFacebookDataProvider implements IntegratedServiceDataProvider {
 
     private static final Map<String, Set<String>> INTERESTS = interests();
 
     @Override
-    public Set<String> getInterests(String userId) {
+    public Set<String> getRawInterests(String userId) {
         return INTERESTS.get(userId);
     }
 
