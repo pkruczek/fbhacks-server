@@ -11,7 +11,11 @@ public class GroupService {
     private final GroupRepository groupRepository;
 
     void createGroup(GroupSaveDto groupSaveDto) {
-        Group insertGroup = new Group(generateIdFromInterests(groupSaveDto.getInterests()), groupSaveDto.getInterests(), groupSaveDto.getMembers());
+        Group insertGroup = Group.builder()
+                .id(generateIdFromInterests(groupSaveDto.getInterests()))
+                .interests(groupSaveDto.getInterests())
+                .members(groupSaveDto.getMembers())
+                .build();
         groupRepository.save(insertGroup);
     }
 
