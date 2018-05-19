@@ -25,7 +25,7 @@ public class InterestMatcher {
                 .map(it -> it.getInterests(targetUserId))
                 .reduce(emptySet(), Sets::union);
 
-        Sets.SetView<String> intersectionResult = intersection(currentUserAllInterests, targetUserAllInterests);
+        Set<String> intersectionResult = intersection(currentUserAllInterests, targetUserAllInterests);
 
         return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult);
     }
