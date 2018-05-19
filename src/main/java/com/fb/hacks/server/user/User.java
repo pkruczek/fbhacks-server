@@ -1,6 +1,10 @@
 package com.fb.hacks.server.user;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Wither;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -19,10 +23,10 @@ public class User {
 
     private final String username;
     private final String password;
-    private final String name;
+    private final String firstName;
     private final String lastName;
-
 }
+
 
 
 
