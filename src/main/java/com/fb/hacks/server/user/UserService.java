@@ -12,6 +12,7 @@ public class UserService {
     public UserCreateDto createUser(UserSaveDto userSaveDto) {
         User userToInsert = User.builder()
                 .username(userSaveDto.getUsername())
+                .password(userSaveDto.getPassword())
                 .firstName(userSaveDto.getFirstName())
                 .lastName(userSaveDto.getLastName())
                 .interests(userSaveDto.getInterests())
