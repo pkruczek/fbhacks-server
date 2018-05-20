@@ -20,10 +20,10 @@ public class MockFacebookDataProvider implements IntegratedServiceDataProvider {
 
     private static Map<String, Set<String>> interests() {
         return ImmutableMap.<String, Set<String>>builder()
-                .put("greg", ImmutableSet.of("girls", "chinese cartoons", "beer"))
-                .put("john", ImmutableSet.of("songs", "obama", "beer"))
+                .put("greg", ImmutableSet.of("hilary", "chinese cartoons", "house"))
+                .put("john", ImmutableSet.of("songs", "obama", "house"))
                 .put("paul", ImmutableSet.of("trump", "cars", "concerts"))
-                .put("rob", ImmutableSet.of("songs", "beer", "girls"))
+                .put("rob", ImmutableSet.of("songs", "house", "hilary"))
                 .build();
     }
 
