@@ -17,7 +17,7 @@ public class UserGetDto {
     private final String lastName;
     private final Set<String> interests;
 
-    static UserGetDto of(User user){
+    public static UserGetDto of(User user){
         return UserGetDto.builder()
                 .id(user.getId().toString())
                 .username(user.getUsername())
