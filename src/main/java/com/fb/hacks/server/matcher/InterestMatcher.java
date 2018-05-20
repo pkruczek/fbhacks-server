@@ -5,6 +5,7 @@ import com.fb.hacks.server.group.GroupRepository;
 import com.fb.hacks.server.provider.IntegratedServiceDataProvider;
 import com.fb.hacks.server.provider.facebook.FacebookDataProvider;
 import com.fb.hacks.server.user.User;
+import com.fb.hacks.server.user.UserGetDto;
 import com.fb.hacks.server.user.UserRepository;
 import com.google.common.collect.Sets;
 import lombok.RequiredArgsConstructor;
@@ -27,10 +28,12 @@ public class InterestMatcher {
     private final GroupRepository groupRepository;
     private final FacebookDataProvider facebookDataProvider;
 
-    @PostConstruct
-    public void init(){
-        integratedServiceDataProviders.remove(facebookDataProvider);
-    }
+//    To remove real fb data provided uncomment below method
+//
+//    @PostConstruct
+//    public void init(){
+//        integratedServiceDataProviders.remove(facebookDataProvider);
+//    }
 
     public AllResults matchAll(String currentUserId) {
         Set<String> currentUserAllInterests = extractCurrentUserInterests(currentUserId);
@@ -64,13 +67,13 @@ public class InterestMatcher {
     private MatchResult matchInterestsForGroup(Set<String> currentUserAllInterests, Group group) {
         Set<String> targetGroupInterest = group.getInterests();
         Set<String> intersectionResult = intersection(currentUserAllInterests, targetGroupInterest);
-        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult, group.getMembers());
+        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult, group.getMembers().stream().map(UserGetDto::of).collect(Collectors.toSet()));
     }
 
     private MatchResult matchInterestsForUser(Set<String> currentUserAllInterests, User targetUser) {
         Set<String> targetUserAllInterests = targetUser.getInterests();
         Set<String> intersectionResult = intersection(currentUserAllInterests, targetUserAllInterests);
-        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult, Sets.newHashSet(targetUser));
+        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult, Sets.newHashSet(UserGetDto.of(targetUser)));
     }
 
     private Set<String> extractCurrentUserInterests(String currentUserId) {
