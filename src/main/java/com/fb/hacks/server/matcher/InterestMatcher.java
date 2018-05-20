@@ -27,10 +27,12 @@ public class InterestMatcher {
     private final GroupRepository groupRepository;
     private final FacebookDataProvider facebookDataProvider;
 
-    @PostConstruct
-    public void init(){
-        integratedServiceDataProviders.remove(facebookDataProvider);
-    }
+//    To remove real fb data provided uncomment below method
+//
+//    @PostConstruct
+//    public void init(){
+//        integratedServiceDataProviders.remove(facebookDataProvider);
+//    }
 
     public AllResults matchAll(String currentUserId) {
         Set<String> currentUserAllInterests = extractCurrentUserInterests(currentUserId);
