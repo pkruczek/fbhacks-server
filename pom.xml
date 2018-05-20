@@ -25,6 +25,7 @@
 		<spring-social-facebook.version>2.0.3.RELEASE</spring-social-facebook.version>
 		<guava.version>25.0-jre</guava.version>
 		<swagger.version>2.7.0</swagger.version>
+		<twitter4j-core.version>4.0.6</twitter4j-core.version>
 	</properties>
 
 	<dependencies>
@@ -49,6 +50,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-core</artifactId>
+			<version>${twitter4j-core.version}</version>
 		</dependency>
 
         <dependency>
