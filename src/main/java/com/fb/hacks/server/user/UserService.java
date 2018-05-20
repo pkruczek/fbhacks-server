@@ -19,4 +19,12 @@ public class UserService {
         userRepository.save(userToInsert);
         return UserCreateDto.builder().userId(ObjectIdConverter.toString(userToInsert.getId())).build();
     }
+
+    public UserGetDto login(UserLoginDto userLoginDto) {
+        User user = userRepository.findOneByUsername(userLoginDto.getUsername());
+        if (!user.getPassword().equals(userLoginDto.getPassword())) {
+            throw new RuntimeException("User Password incorrect!");
+        }
+        return UserGetDto.of(user);
+    }
 }
