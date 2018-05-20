@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -67,7 +68,8 @@ public class InterestMatcher {
     private MatchResult matchInterestsForGroup(Set<String> currentUserAllInterests, Group group) {
         Set<String> targetGroupInterest = group.getInterests();
         Set<String> intersectionResult = intersection(currentUserAllInterests, targetGroupInterest);
-        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult, group.getMembers().stream().map(UserGetDto::of).collect(Collectors.toSet()));
+        return new MatchResult(calculateIntersectionPercentResult(currentUserAllInterests, intersectionResult), intersectionResult,
+                group.getMembers().isEmpty() ?  Collections.emptySet() : group.getMembers().stream().map(UserGetDto::of).collect(Collectors.toSet()));
     }
 
     private MatchResult matchInterestsForUser(Set<String> currentUserAllInterests, User targetUser) {
