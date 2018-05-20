@@ -1,6 +1,7 @@
 package com.fb.hacks.server.testing;
 
 import com.fb.hacks.server.provider.facebook.FacebookDataProvider;
+import com.fb.hacks.server.provider.spotify.SpotifyDataProvider;
 import com.fb.hacks.server.provider.twitter.TwitterDataProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class TestingController {
 
     private final FacebookDataProvider facebookDataProvider;
     private final TwitterDataProvider twitterDataProvider;
+    private final SpotifyDataProvider spotifyDataProvider;
 
     @GetMapping("likes")
     public String getLikes() {
@@ -24,6 +26,11 @@ public class TestingController {
     @GetMapping("tweets")
     public String getTweets() {
         return twitterDataProvider.getRawInterests("greg").toString();
+    }
+
+    @GetMapping("spotify")
+    public String getSpotify() {
+        return spotifyDataProvider.getRawInterests("greg").toString();
     }
 
     @GetMapping("fb")
